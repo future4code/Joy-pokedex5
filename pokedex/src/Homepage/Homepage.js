@@ -4,7 +4,9 @@ export default function HomePage() {
  
   return(
     <div>
-      HomePage
+      <center>
+      <img height="1000px" alt="homepage" src="img/pageteste.png" />
+      </center>
     </div>
   )
 }
