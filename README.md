@@ -1,9 +1,12 @@
 # POKEDEX
 
+Dianhos BR Group .LTDA
+
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- [Célio Jr.](https://github.com/future4code/Celio-Junior)
+- [Gabriel Silva](https://github.com/GabrielSS187)
+- [Ricardo Ribeiro](https://github.com/RickHardBR/RickHardBR)
+-  - 
 
 Link do Surge: www.link.com.br
 
