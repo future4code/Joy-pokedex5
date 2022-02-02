@@ -6,14 +6,11 @@ Nome dos integrantes:
 - [Célio Jr.](https://github.com/future4code/Celio-Junior)
 - [Gabriel Silva](https://github.com/GabrielSS187)
 - [Ricardo Ribeiro](https://github.com/RickHardBR/RickHardBR)
--  - 
 
 Link do Surge: www.link.com.br
 
 O que funciona:
-- Item 1
-- Item 2
+- Rotas criadas
 
 O que não funciona: 
-- Item 3
-- Item 4
+- É apenas o início do projeto - 01/02/2021
