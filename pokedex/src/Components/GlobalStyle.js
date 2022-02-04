@@ -6,5 +6,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'Roboto', 'Helvetica',"Coda", 'sans serif';
 }
+
 `
 export default GlobalStyle;
