@@ -14,11 +14,11 @@ export default function App() {
         <Routes>
           <Route path={'/'} element={<HomePage />} />
         
-          <Route path={'/Pokeindex'} element={<Pokeindex />} />
+          <Route path={'/PokeIndex'} element={<Pokeindex />} />
         
           <Route path={'/Pokedex'} element={<Pokedex />} />
        
-          <Route path={'/Detail'} element={<Details />} />
+          <Route path={'/Details'} element={<Details />} />
         </Routes>
       </BrowserRouter>
     </div>
