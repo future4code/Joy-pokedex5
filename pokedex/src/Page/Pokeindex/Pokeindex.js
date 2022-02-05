@@ -1,51 +1,72 @@
 /* eslint-disable array-callback-return */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import ButtonGoBack from "../../Components/ButtonGoBack";
+import poke from './img/pokedex.png'
 
-import axios from "axios";
+import { useNavigate } from 'react-router-dom'
 
-import { Card, Container, ContainerImg, ContainerDetail }  from "./Style";
+import ButtonGoBack from '../../Components/ButtonGoBack'
+
+import axios from 'axios'
+
+import {
+  Card,
+  Container,
+  ContainerImg,
+  ContainerName,
+  ImgPokeTest,
+  ButtonAdd,
+  ButtonDetails,
+  Bluur,
+  Pokedex
+} from './Style'
 
 export default function PokeIndex() {
+  const [pokemons, setPokemons] = useState([])
 
-  const [ pokemons, setPokemons ] = useState( [] );
+  useEffect(() => {
+    axios.get(' https://pokeapi.co/api/v2/pokemon/').then(({ data }) => {
+      setPokemons(data.results)
+    })
+  }, [])
 
-useEffect(() => {
+  const navigate = useNavigate()
 
-  axios.get(" https://pokeapi.co/api/v2/pokemon/")
-  .then(({ data }) => {
-    setPokemons(data.results);
-  });
+  const pagePokedex = () => {
+    navigate('/Pokedex')
+  }
 
-}, []);
- 
-  return(
+  const pageDetails = () => {
+    navigate('/Details')
+  }
+
+  return (
     <Container>
-      PokeIndex
-
-      {
-        pokemons.map(( pokemon ) => {
-
-          return (
-
-            <Card key={pokemon.name}>
-              <ContainerImg>
-                 img
-              </ContainerImg>
-              <ContainerDetail>
-                <p>{(pokemon.name).toUpperCase()}</p>
-              </ContainerDetail>
-            </Card>
-          )
-        })
-      }
-
-      <ButtonGoBack>
-        Voltar
-      </ButtonGoBack>
-
+      <Pokedex src="./img/pokedex.png"/>
+      <ButtonGoBack>Voltar</ButtonGoBack>
+      {pokemons.map(pokemon => {
+        return (
+          <Card key={pokemon.name}>
+            <ContainerImg>
+            <ButtonAdd>
+              <button>Adicionar</button>
+            </ButtonAdd>
+            <ButtonDetails>
+            <button onClick={pagePokedex}>Detalhes</button>
+            </ButtonDetails>
+            <ImgPokeTest>
+            <Bluur>
+            <img src={poke} />
+            </Bluur>
+            </ImgPokeTest>
+              <ContainerName>
+                <p>{pokemon.name.toUpperCase()}</p>
+              </ContainerName>
+            </ContainerImg>
+          </Card>
+        )
+      })}
+      
     </Container>
-
-  );
-};
+  )
+}
