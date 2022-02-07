@@ -9,6 +9,11 @@ align-items: center;
 background: black;
 `;
 
+export const Header = styled.div`
+display: flex;
+justify-content: space-between;
+`
+
 export const Pokedex = styled.img`
 height: 7vh;
 margin: 5px;
@@ -28,7 +33,6 @@ backdrop-filter: blur( 90px );
 -webkit-backdrop-filter: blur( 4px );
 border-radius:10px;
 margin-bottom: 20px;
-
 `;
 
 export const ContainerImg = styled.div`
@@ -40,7 +44,6 @@ align-items: center;
 width: 100%;
 height: 50%;
 border-radius:10px;
-/* border: 1px solid red; */
 `;
 
 export const ContainerName = styled.div`
@@ -50,7 +53,6 @@ justify-content: center;
 margin-top: 10px;
 width: 60%;
 font-weight: bold;
-/* border: 1px solid red; */
 border-radius:10px;
 `;
 
@@ -74,7 +76,6 @@ height:100px;
 width: 100px;
 border-radius:50%;
 margin-bottom: 20px;
-
 }`
 
 export const ButtonAdd = styled.div`
@@ -99,12 +100,6 @@ button:hover {
  background-color: transparent;
  color: #fff;
 }
-
-/* button:focus {
- box-shadow: 0px 0px 0px 5px rgba(20, 87, 244, 0.37), 0px 0px 0px 10px rgba(20, 87, 244, 0.38);
- outline: none;
-} */
-
 `
 export const ButtonDetails = styled.div`
 position: fixed;
@@ -124,6 +119,38 @@ button {
  cursor:pointer;
 }
 
+button:hover {
+ border: 1px solid #fff;
+ background-color: transparent;
+ color: #fff;
+}
+`
+
+export const HeaderLButton = styled.div`
+width: 10%;
+position: fixed;
+margin-top: 5px;
+margin-left: 4px;
+top: 30px;
+left: 15px;
+`
+export const HeaderRButton = styled.div`
+width: 10%;
+position: fixed;
+margin-top: 5px;
+margin-right: 4px;
+top: 35px;
+right: 40px;
+
+button {
+ background-color: rgb(192,192,192);
+ border: 1px solid rgb(0, 0, 0);
+ padding: 2px 7px;
+ border-radius: 100px;
+ transition: .3s;
+ color: #000;
+ cursor:pointer;
+}
 button:hover {
  border: 1px solid #fff;
  background-color: transparent;
