@@ -28,7 +28,6 @@ export default function HomePage() {
         <Button onClick={pagePokeIndex}>
            <Pokebola alt="Pokebola" src="img/pokebola.png" />
         </Button>
-        <button onClick={pagePokedex}>Poke Dex</button>
         </DivPokebola>
     </Container>
   )

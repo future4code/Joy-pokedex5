@@ -11,6 +11,7 @@ button {
  transition: .3s;
  color: #000;
  cursor:pointer;
+ width: 66px;
 }
 
 button:hover {

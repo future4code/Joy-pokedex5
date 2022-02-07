@@ -18,16 +18,21 @@ import {
   ButtonAdd,
   ButtonDetails,
   Bluur,
-  Pokedex
+  Pokedex,
+  Header,
+  HeaderLButton,
+  HeaderRButton
 } from './Style'
 
 export default function PokeIndex() {
   const [pokemons, setPokemons] = useState([])
 
   useEffect(() => {
-    axios.get(' https://pokeapi.co/api/v2/pokemon/').then(({ data }) => {
-      setPokemons(data.results)
-    })
+    axios
+      .get(' https://pokeapi.co/api/v2/pokemon/')
+      .then(({ data }) => {
+        setPokemons(data.results)
+      })
   }, [])
 
   const navigate = useNavigate()
@@ -42,23 +47,32 @@ export default function PokeIndex() {
 
   return (
     <Container>
-      <Pokedex src="./img/pokedex.png"/>
-      <ButtonGoBack>Voltar</ButtonGoBack>
+      <Header>
+        <HeaderLButton className='button'>
+          <ButtonGoBack>Voltar</ButtonGoBack>
+        </HeaderLButton>
+        <Pokedex src="./img/pokemons.png" />
+        <HeaderRButton>
+          <button className='button' onClick={pagePokedex}>Pokedéx</button>
+        </HeaderRButton>
+        
+      </Header>
+
       {pokemons.map(pokemon => {
         return (
           <Card key={pokemon.name}>
             <ContainerImg>
-            <ButtonAdd>
-              <button>Adicionar</button>
-            </ButtonAdd>
-            <ButtonDetails>
-            <button onClick={pagePokedex}>Detalhes</button>
-            </ButtonDetails>
-            <ImgPokeTest>
-            <Bluur>
-            <img src={poke} />
-            </Bluur>
-            </ImgPokeTest>
+              <ButtonAdd>
+                <button>Adicionar</button>
+              </ButtonAdd>
+              <ButtonDetails>
+                <button onClick={pageDetails}>Detalhes</button>
+              </ButtonDetails>
+              <ImgPokeTest>
+                <Bluur>
+                  <img src={poke} />
+                </Bluur>
+              </ImgPokeTest>
               <ContainerName>
                 <p>{pokemon.name.toUpperCase()}</p>
               </ContainerName>
@@ -66,7 +80,6 @@ export default function PokeIndex() {
           </Card>
         )
       })}
-      
     </Container>
   )
 }
