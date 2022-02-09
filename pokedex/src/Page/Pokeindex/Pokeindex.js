@@ -1,6 +1,8 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react'
 
+import { BASE_URL2 } from '../../Components/URLs/BASE_URL'
+
 import poke from './img/pokedex.png'
 
 import { useNavigate } from 'react-router-dom'
@@ -28,11 +30,7 @@ export default function PokeIndex() {
   const [pokemons, setPokemons] = useState([])
 
   useEffect(() => {
-    axios
-      .get(' https://pokeapi.co/api/v2/pokemon/')
-      .then(({ data }) => {
-        setPokemons(data.results)
-      })
+    axios.get(`${BASE_URL2}`).then(({ data }) => {setPokemons(data.results)})
   }, [])
 
   const navigate = useNavigate()
@@ -70,7 +68,7 @@ export default function PokeIndex() {
               </ButtonDetails>
               <ImgPokeTest>
                 <Bluur>
-                  <img src={poke} />
+                  <img src={poke} alt="Imagem"/>
                 </Bluur>
               </ImgPokeTest>
               <ContainerName>
