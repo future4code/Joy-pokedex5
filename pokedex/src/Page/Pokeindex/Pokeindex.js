@@ -1,7 +1,10 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react'
 
-// import poke from './img/pokedex.png'
+import { BASE_URL2 } from '../../Components/URLs/BASE_URL'
+
+import poke from './img/pokedex.png'
+
 
 import { useNavigate } from 'react-router-dom'
 
@@ -28,6 +31,9 @@ export default function PokeIndex() {
   const [pokemons, setPokemons] = useState([])
 
   useEffect(() => {
+
+    axios.get(`${BASE_URL2}`).then(({ data }) => {setPokemons(data.results)})
+
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/`)
       .then(({data})=>{
@@ -45,6 +51,7 @@ export default function PokeIndex() {
       }).catch((err)=>{
         console.log(err.message)
       })
+
   }, [])
 
   const navigate = useNavigate()
@@ -96,6 +103,29 @@ export default function PokeIndex() {
         </HeaderRButton>
         
       </Header>
+
+      {pokemons.map(pokemon => {
+        return (
+          <Card key={pokemon.name}>
+            <ContainerImg>
+              <ButtonAdd>
+                <button>Adicionar</button>
+              </ButtonAdd>
+              <ButtonDetails>
+                <button onClick={pageDetails}>Detalhes</button>
+              </ButtonDetails>
+              <ImgPokeTest>
+                <Bluur>
+                  <img src={poke} alt="Imagem"/>
+                </Bluur>
+              </ImgPokeTest>
+              <ContainerName>
+                <p>{pokemon.name.toUpperCase()}</p>
+              </ContainerName>
+            </ContainerImg>
+          </Card>
+        )
+      })}
 
       {newPokemonList}
 
