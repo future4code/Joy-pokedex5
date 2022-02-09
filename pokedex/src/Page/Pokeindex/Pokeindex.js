@@ -5,6 +5,7 @@ import { BASE_URL2 } from '../../Components/URLs/BASE_URL'
 
 import poke from './img/pokedex.png'
 
+
 import { useNavigate } from 'react-router-dom'
 
 import ButtonGoBack from '../../Components/ButtonGoBack'
@@ -30,7 +31,27 @@ export default function PokeIndex() {
   const [pokemons, setPokemons] = useState([])
 
   useEffect(() => {
+
     axios.get(`${BASE_URL2}`).then(({ data }) => {setPokemons(data.results)})
+
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/`)
+      .then(({data})=>{
+      
+        const getListPokemon = data.results
+
+        getListPokemon.forEach((poke) => {
+          axios.get(`${poke.url}`).then(({data})=>{
+            setPokemons([data])
+          }).catch((err)=>{
+            console.log(err.message)
+          })        
+        });
+
+      }).catch((err)=>{
+        console.log(err.message)
+      })
+
   }, [])
 
   const navigate = useNavigate()
@@ -42,6 +63,33 @@ export default function PokeIndex() {
   const pageDetails = () => {
     navigate('/Details')
   }
+
+  const newPokemonList = pokemons.map((pokemon)=>{
+    console.log(pokemon)
+    return (
+      <Card key={pokemon && pokemon.id}>
+        <ContainerImg>
+          <ButtonAdd>
+            <button>Adicionar</button>
+          </ButtonAdd>
+          <ButtonDetails>
+            <button onClick={pageDetails}>Detalhes</button>
+          </ButtonDetails>
+          <ImgPokeTest>
+            <Bluur>
+              <img src={pokemon && pokemon.sprites.versions["generation-v"]["black-white"]
+              .animated.front_default} />
+            </Bluur>
+          </ImgPokeTest>
+          <ContainerName>
+            <p>{pokemon.name.toUpperCase()}</p>
+          </ContainerName>
+        </ContainerImg>
+      </Card>
+    )
+    
+
+  })
 
   return (
     <Container>
@@ -78,6 +126,9 @@ export default function PokeIndex() {
           </Card>
         )
       })}
+
+      {newPokemonList}
+
     </Container>
   )
 }
