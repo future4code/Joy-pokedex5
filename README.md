@@ -7,10 +7,17 @@ Nome dos integrantes:
 - [Gabriel Silva](https://github.com/GabrielSS187)
 - [Ricardo Ribeiro](https://github.com/RickHardBR/RickHardBR)
 
-Link do Surge: www.link.com.br
+Link do Surge: [PokeDianhos](http://spacelabextravel.surge.sh)
 
 O que funciona:
 - Rotas criadas
+- Renderização da lista de nomes e algumas imagens, mas estamos com comproblema para trazer as imagens corretamente.
 
 O que não funciona: 
 - É apenas o início do projeto - 01/02/2021
+- As imagens que queremos estão vindo, mas não da forma que queremos.
+
+![image](https://user-images.githubusercontent.com/89301596/153257138-3a8b8135-fa8c-4ba2-93d8-961644f19482.png)
+
+![image](https://user-images.githubusercontent.com/89301596/153257152-302673b7-5b94-49db-b67d-0724b827d030.png)
+
