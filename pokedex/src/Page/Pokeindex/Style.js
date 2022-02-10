@@ -1,71 +1,110 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: black;
+  width: 100vw;
+  justify-content: center;
 
-color: white;
-display: flex;
-flex-direction: column;
-align-items: center;
-background: black;
-`;
+  @media screen and (min-width: 640px) {
+    display: grid;
+    width: 100%;
+    justify-items: center;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+   
+    grid-template-areas:
+      "Left Meio Right";
+  
+  .Left {
+    justify-self: center; 
+    grid-area: Left;
+  }
+}
+`
 
 export const Header = styled.div`
-display: flex;
-justify-content: space-between;
+  background: #000;
+  display: grid;
+  grid-auto-columns: 1fr 1fr 1fr; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 0.4fr 0.1fr; 
+  
+  grid-template-areas: 
+    "header header header"
+    "back meio pokedex"; 
+
+.header {
+  justify-self: center; 
+  grid-area: header;
+}
+
+.back {
+  justify-self: center; 
+  grid-area: back;
+}
+.meio {
+  justify-self: center; 
+}
+.pokedex {
+  justify-self: center; 
+  grid-area: pokedex; 
+}
 `
 
 export const Pokedex = styled.img`
-height: 7vh;
-margin: 5px;
-}
+  height: 7vh;
 `
 
 export const Card = styled.div`
-
-display: flex;
-flex-direction: column;
-justify-content:center;
-align-items: center;
-border: 1px solid #fff;
-height: 50vh;
-width: 60%;
-margin-top: 15px;
-box-shadow: 0px 0px 10px 2px rgba( 250, 250, 250, 0.6 );
-backdrop-filter: blur( 90px );
--webkit-backdrop-filter: blur( 4px );
-border-radius:10px;
-margin-bottom: 20px;
-`;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #fff; */
+  height: 50vh;
+  width: 60%;
+  margin-top: 15px;
+  box-shadow: 0px 0px 10px 2px rgba(250, 250, 250, 0.6);
+  backdrop-filter: blur(90px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  
+`
 
 export const ContainerImg = styled.div`
-display: flex;
--webkit-animation: rotate-anime 3s linear infinite;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-width: 100%;
-height: 50%;
-border-radius:10px;
-`;
+  display: flex;
+  -webkit-animation: rotate-anime 3s linear infinite;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+`
 
 export const ContainerName = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 60%;
+  font-weight: bold;
+  border-radius: 10px;
+`
 
-display: flex;
-justify-content: center;
-margin-top: 10px;
-width: 60%;
-font-weight: bold;
-border-radius:10px;
-`;
-
-export const ImgPokeTest = styled.div`
-display: flex;
-justify-content: center;
-width: 80%;
-img{
-    width: 80%;
-}
-`;
+export const ImgPoke = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  img {
+    height: 10vh;
+  }
+`
 
 export const Bluur = styled.div`
 display: flex;
@@ -81,81 +120,67 @@ margin-bottom: 20px;
 }`
 
 export const ButtonAdd = styled.div`
-position: fixed;
-margin-top: 5px;
-margin-left: 4px;
-top:0;
-left:0;
+  position: fixed;
+  margin-top: 5px;
+  margin-left: 4px;
+  top: 0;
+  left: 0;
 
-button {
- background-color: rgb(192,192,192);
- border: 1px solid rgb(0, 0, 0);
- padding: 2px 7px;
- border-radius: 100px;
- transition: .3s;
- color: #000;
- cursor:pointer;
-}
+  button {
+    background-color: rgb(192, 192, 192);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 2px 7px;
+    border-radius: 100px;
+    transition: 0.3s;
+    color: #000;
+    cursor: pointer;
+  }
 
-button:hover {
- border: 1px solid #fff;
- background-color: transparent;
- color: #fff;
-}
+  button:hover {
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+  }
 `
 export const ButtonDetails = styled.div`
-position: fixed;
-margin-top: 5px;
-margin-right: 4px;
-padding: 1px 1px;
-top:0;
-right:0;
+  position: fixed;
+  margin-top: 5px;
+  margin-right: 4px;
+  padding: 1px 1px;
+  top: 0;
+  right: 0;
 
-button {
- background-color: rgb(192,192,192);
- border: 1px solid rgb(0, 0, 0);
- padding: 2px 7px;
- border-radius: 100px;
- transition: .3s;
- color: #000;
- cursor:pointer;
-}
+  button {
+    background-color: rgb(192, 192, 192);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 2px 7px;
+    border-radius: 100px;
+    transition: 0.3s;
+    color: #000;
+    cursor: pointer;
+  }
 
-button:hover {
- border: 1px solid #fff;
- background-color: transparent;
- color: #fff;
-}
+  button:hover {
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+  }
 `
 
-export const HeaderLButton = styled.div`
-width: 10%;
-position: fixed;
-margin-top: 5px;
-margin-left: 4px;
-top: 30px;
-left: 15px;
-`
-export const HeaderRButton = styled.div`
-width: 10%;
-position: fixed;
-margin-top: 5px;
-margin-right: 4px;
-top: 35px;
-right: 40px;
+export const HeaderButton = styled.div`
+  button {
+    background-color: rgb(192, 192, 192);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 2px 7px;
+    border-radius: 100px;
+    transition: 0.3s;
+    color: #000;
+    cursor: pointer;
+  }
 
-button {
- background-color: rgb(192,192,192);
- border: 1px solid rgb(0, 0, 0);
- padding: 2px 7px;
- border-radius: 100px;
- transition: .3s;
- color: #000;
- cursor:pointer;
-}
-button:hover {
- border: 1px solid #fff;
- background-color: transparent;
- color: #fff;
-}
+  button:hover {
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+  }
 `
