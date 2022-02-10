@@ -17,14 +17,16 @@ justify-content: space-between;
 export const Pokedex = styled.img`
 height: 7vh;
 margin: 5px;
+}
 `
 
 export const Card = styled.div`
 
 display: flex;
 flex-direction: column;
+justify-content:center;
 align-items: center;
-border: 1px solid #ff;
+border: 1px solid #fff;
 height: 50vh;
 width: 60%;
 margin-top: 15px;

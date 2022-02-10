@@ -1,16 +1,17 @@
 /* eslint-disable array-callback-return */
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { BASE_URL2 } from '../../Components/URLs/BASE_URL'
+import { BASE_URL, BASE_URLIMG } from '../../Components/URLs/BASE_URL';
+
+import axios from "axios"
 
 import poke from './img/pokedex.png'
 
+import { useRequestpokes } from "../../Hooks/UseRequestpokes";
 
 import { useNavigate } from 'react-router-dom'
 
 import ButtonGoBack from '../../Components/ButtonGoBack'
-
-import axios from 'axios'
 
 import {
   Card,
@@ -28,70 +29,51 @@ import {
 } from './Style'
 
 export default function PokeIndex() {
-  const [pokemons, setPokemons] = useState([])
-
-  useEffect(() => {
-
-    axios.get(`${BASE_URL2}`).then(({ data }) => {setPokemons(data.results)})
-
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/`)
-      .then(({data})=>{
-      
-        const getListPokemon = data.results
-
-        getListPokemon.forEach((poke) => {
-          axios.get(`${poke.url}`).then(({data})=>{
-            setPokemons([data])
-          }).catch((err)=>{
-            console.log(err.message)
-          })        
-        });
-
-      }).catch((err)=>{
-        console.log(err.message)
-      })
-
-  }, [])
 
   const navigate = useNavigate()
 
+  const [ pokemons, isLoading, error ] =  useRequestpokes( `${BASE_URL}`, [] );
+
   const pagePokedex = () => {
     navigate('/Pokedex')
-  }
+  };
 
   const pageDetails = () => {
     navigate('/Details')
-  }
+  };
 
-  const newPokemonList = pokemons.map((pokemon)=>{
-    console.log(pokemon)
+  const  renderPokemonList = pokemons.map(( pokemon, i ) =>{
+
     return (
-      <Card key={pokemon && pokemon.id}>
+      <Card key={ i }>
+
         <ContainerImg>
+
           <ButtonAdd>
             <button>Adicionar</button>
           </ButtonAdd>
+
           <ButtonDetails>
             <button onClick={pageDetails}>Detalhes</button>
           </ButtonDetails>
+
           <ImgPokeTest>
             <Bluur>
-              <img src={pokemon && pokemon.sprites.versions["generation-v"]["black-white"]
-              .animated.front_default} />
+              <img src={ `${BASE_URLIMG}/${i + 1}.gif` } lazy="Loading" />
             </Bluur>
           </ImgPokeTest>
+
           <ContainerName>
             <p>{pokemon.name.toUpperCase()}</p>
           </ContainerName>
+
         </ContainerImg>
       </Card>
-    )
-    
-
-  })
+    );
+  });
 
   return (
+
     <Container>
       <Header>
         <HeaderLButton className='button'>
@@ -104,31 +86,13 @@ export default function PokeIndex() {
         
       </Header>
 
-      {pokemons.map(pokemon => {
-        return (
-          <Card key={pokemon.name}>
-            <ContainerImg>
-              <ButtonAdd>
-                <button>Adicionar</button>
-              </ButtonAdd>
-              <ButtonDetails>
-                <button onClick={pageDetails}>Detalhes</button>
-              </ButtonDetails>
-              <ImgPokeTest>
-                <Bluur>
-                  <img src={poke} alt="Imagem"/>
-                </Bluur>
-              </ImgPokeTest>
-              <ContainerName>
-                <p>{pokemon.name.toUpperCase()}</p>
-              </ContainerName>
-            </ContainerImg>
-          </Card>
-        )
-      })}
+ 
+      { isLoading && ( <p>Loading...</p> ) }
 
-      {newPokemonList}
+      { !isLoading && error && <p>Ocorreu algúm erro desculpe.</p> }
+
+      { !isLoading && renderPokemonList && renderPokemonList.length > 0 && renderPokemonList}
 
     </Container>
-  )
-}
+  );
+};
