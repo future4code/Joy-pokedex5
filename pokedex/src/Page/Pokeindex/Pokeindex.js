@@ -1,13 +1,9 @@
 /* eslint-disable array-callback-return */
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-import { BASE_URL, BASE_URLIMG } from '../../Components/URLs/BASE_URL';
+import { BASE_URL, BASE_URLIMG } from '../../Components/URLs/BASE_URL'
 
-import axios from "axios"
-
-import poke from './img/pokedex.png'
-
-import { useRequestpokes } from "../../Hooks/UseRequestpokes";
+import { useRequestpokes } from '../../Hooks/UseRequestpokes'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -18,37 +14,32 @@ import {
   Container,
   ContainerImg,
   ContainerName,
-  ImgPokeTest,
+  ImgPoke,
   ButtonAdd,
   ButtonDetails,
   Bluur,
   Pokedex,
   Header,
-  HeaderLButton,
-  HeaderRButton
+  HeaderButton
 } from './Style'
 
 export default function PokeIndex() {
-
   const navigate = useNavigate()
 
-  const [ pokemons, isLoading, error ] =  useRequestpokes( `${BASE_URL}`, [] );
+  const [pokemons, isLoading, error] = useRequestpokes(`${BASE_URL}`, [])
 
   const pagePokedex = () => {
     navigate('/Pokedex')
-  };
+  }
 
   const pageDetails = () => {
     navigate('/Details')
-  };
+  }
 
-  const  renderPokemonList = pokemons.map(( pokemon, i ) =>{
-
+  const renderPokemonList = pokemons.map((pokemon, i) => {
     return (
-      <Card key={ i }>
-
+      <Card key={i} className="main">
         <ContainerImg>
-
           <ButtonAdd>
             <button>Adicionar</button>
           </ButtonAdd>
@@ -57,42 +48,49 @@ export default function PokeIndex() {
             <button onClick={pageDetails}>Detalhes</button>
           </ButtonDetails>
 
-          <ImgPokeTest>
+          <ImgPoke>
             <Bluur>
-              <img src={ `${BASE_URLIMG}/${i + 1}.gif` } lazy="Loading" />
+              <img
+                alt="Imagens dos Pokemons"
+                src={`${BASE_URLIMG}/${i + 1}.gif`}
+                lazy="Loading"
+              />
             </Bluur>
-          </ImgPokeTest>
-
+          </ImgPoke>
+   
           <ContainerName>
             <p>{pokemon.name.toUpperCase()}</p>
           </ContainerName>
-
         </ContainerImg>
       </Card>
-    );
-  });
+    )
+  })
 
   return (
-
-    <Container>
+    <>
       <Header>
-        <HeaderLButton className='button'>
-          <ButtonGoBack>Voltar</ButtonGoBack>
-        </HeaderLButton>
-        <Pokedex src="./img/pokemons.png" />
-        <HeaderRButton>
-          <button className='button' onClick={pagePokedex}>Pokedéx</button>
-        </HeaderRButton>
-        
+        <Pokedex className="header" src="./img/pokemons.png" />
+          <HeaderButton className="back">
+            <ButtonGoBack>Voltar</ButtonGoBack>
+          </HeaderButton>
+        <div></div>
+        <HeaderButton className="pokedex">
+          <button onClick={pagePokedex} >
+            Pokedéx
+          </button>
+        </HeaderButton>
       </Header>
 
- 
-      { isLoading && ( <p>Loading...</p> ) }
+      <Container>
+        {isLoading && <p>Loading...</p>}
 
-      { !isLoading && error && <p>Ocorreu algúm erro desculpe.</p> }
+        {!isLoading && error && <p>Ocorreu algúm erro desculpe.</p>}
 
-      { !isLoading && renderPokemonList && renderPokemonList.length > 0 && renderPokemonList}
-
-    </Container>
-  );
-};
+        {!isLoading &&
+          renderPokemonList &&
+          renderPokemonList.length > 0 &&
+          renderPokemonList}
+      </Container>
+    </>
+  )
+}
