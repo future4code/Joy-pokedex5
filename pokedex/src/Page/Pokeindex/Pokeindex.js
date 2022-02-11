@@ -14,13 +14,14 @@ import {
   Container,
   ContainerImg,
   ContainerName,
-  ImgPoke,
+  // ImgPoke,
   ButtonAdd,
   ButtonDetails,
   Bluur,
   Pokedex,
   Header,
-  HeaderButton
+  HeaderButton,
+  ImgPokes
 } from './Style'
 
 export default function PokeIndex() {
@@ -48,15 +49,15 @@ export default function PokeIndex() {
             <button onClick={pageDetails}>Detalhes</button>
           </ButtonDetails>
 
-          <ImgPoke>
+          {/* <ImgPoke> */}
             <Bluur>
-              <img
+              <ImgPokes
                 alt="Imagens dos Pokemons"
                 src={`${BASE_URLIMG}/${i + 1}.gif`}
                 lazy="Loading"
               />
             </Bluur>
-          </ImgPoke>
+          {/* </ImgPoke> */}
    
           <ContainerName>
             <p>{pokemon.name.toUpperCase()}</p>
