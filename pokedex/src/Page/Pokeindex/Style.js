@@ -6,8 +6,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background: black;
-  width: 100vw;
+  width: 100%;
   justify-content: center;
+  
 
   @media screen and (min-width: 570px)  and (max-device-width : 800px){
   display: grid; 
@@ -49,6 +50,7 @@ export const Container = styled.div`
 export const Header = styled.div`
   background: #000;
   display: grid;
+  width: 100%;
   grid-auto-columns: 1fr 1fr 1fr; 
   grid-template-columns: 1fr 1fr; 
   grid-template-rows: 0.4fr 0.1fr; 
