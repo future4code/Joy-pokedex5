@@ -7,7 +7,7 @@ Nome dos integrantes:
 - [Gabriel Silva](https://github.com/GabrielSS187)
 - [Ricardo Ribeiro](https://github.com/RickHardBR/RickHardBR)
 
-Link do Surge: [PokeDianhos](http://spacelabextravel.surge.sh)
+Link do Surge: [PokeDianhos](http://pokedianhos.surge.sh/)
 
 O que funciona:
 - Rotas criadas
