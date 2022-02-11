@@ -9,21 +9,40 @@ export const Container = styled.div`
   width: 100vw;
   justify-content: center;
 
-  @media screen and (min-width: 640px) {
-    display: grid;
-    width: 100%;
-    justify-items: center;
-    grid-auto-columns: 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-   
-    grid-template-areas:
-      "Left Meio Right";
-  
-  .Left {
-    justify-self: center; 
-    grid-area: Left;
-  }
+  @media screen and (min-width: 570px)  and (max-device-width : 800px){
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 0px 0px; 
+  justify-content: center; 
+  justify-items: center; 
+}
+
+  @media screen and (min-width: 815px)  and (max-device-width : 865px){
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  justify-content: center; 
+  justify-items: center; 
+}
+
+@media screen and (min-width: 870px)  and (max-device-width : 1170px){
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  justify-content: center; 
+  justify-items: center; 
+}
+
+@media screen and (min-width: 1171px){
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  justify-content: center; 
+  justify-items: center; 
 }
 `
 
@@ -66,8 +85,8 @@ export const Card = styled.div`
   justify-content: center;
   align-items: center;
   /* border: 1px solid #fff; */
-  height: 50vh;
-  width: 60%;
+  height: 350px;
+  width: 250px;
   margin-top: 15px;
   box-shadow: 0px 0px 10px 2px rgba(250, 250, 250, 0.6);
   backdrop-filter: blur(90px);
@@ -97,15 +116,10 @@ export const ContainerName = styled.div`
   border-radius: 10px;
 `
 
-export const ImgPoke = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 10%;
-  img {
-    height: 10vh;
-  }
-`
+export const ImgPokes = styled.img`
+    height: 80px;
 
+`
 export const Bluur = styled.div`
 display: flex;
 justify-content: center;
