@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React from 'react'
+import React, { useState } from 'react'
 
 import { BASE_URL, BASE_URLIMG } from '../../Components/URLs/BASE_URL'
 
@@ -28,14 +28,27 @@ export default function PokeIndex() {
   const navigate = useNavigate()
 
   const [pokemons, isLoading, error] = useRequestpokes(`${BASE_URL}`, [])
+  const [pokedex, setPokedex] = useState([])
 
   const pagePokedex = () => {
-    navigate('/Pokedex')
+    navigate('/Pokedexx')
   }
 
-  const pageDetails = () => {
-    navigate('/Details')
+  const pokemonDetails = (id) =>{
+    navigate(`/Details/${id + 1}`)
   }
+
+  
+  const addPokemonToPokedex = (name) =>{
+    const newPokemons = [
+      ...pokedex,
+      {
+        name: name
+      }
+    ]
+    setPokedex(newPokemons)
+  }
+
 
   const renderPokemonList = pokemons.map((pokemon, i) => {
     return (
@@ -46,7 +59,7 @@ export default function PokeIndex() {
           </ButtonAdd>
 
           <ButtonDetails>
-            <button onClick={pageDetails}>Detalhes</button>
+            <button onClick={()=> pokemonDetails(i)}>Detalhes</button>
           </ButtonDetails>
 
           {/* <ImgPoke> */}

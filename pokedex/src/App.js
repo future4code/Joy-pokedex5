@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './Homepage/Homepage'
 import Pokeindex from '../src/Page/Pokeindex/Pokeindex'
-import Pokedex from '../src/Page/Pokedex/Pokedex'
+import Pokedexx from './Page/Pokedex/Pokedexx'
 import Details from '../src/Page/Details/Details'
 import GlobalStyle from './Components/GlobalStyle'
 
@@ -16,9 +16,9 @@ export default function App() {
         
           <Route path={'/PokeIndex'} element={<Pokeindex />} />
         
-          <Route path={'/Pokedex'} element={<Pokedex />} />
+          <Route path={'/Pokedexx'} element={<Pokedexx />} />
        
-          <Route path={'/Details'} element={<Details />} />
+          <Route path={'/Details/:pokemon'} element={<Details />} />
         </Routes>
       </BrowserRouter>
     </div>
