@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import React, { useState } from 'react'
 
 import { BASE_URL, BASE_URLIMG } from '../../Components/URLs/BASE_URL'
@@ -14,7 +13,6 @@ import {
   Container,
   ContainerImg,
   ContainerName,
-  // ImgPoke,
   ButtonAdd,
   ButtonDetails,
   Bluur,
@@ -34,12 +32,11 @@ export default function PokeIndex() {
     navigate('/Pokedexx')
   }
 
-  const pokemonDetails = (id) =>{
+  const pokemonDetails = id => {
     navigate(`/Details/${id + 1}`)
   }
 
-  
-  const addPokemonToPokedex = (name) =>{
+  const addPokemonToPokedex = name => {
     const newPokemons = [
       ...pokedex,
       {
@@ -48,7 +45,6 @@ export default function PokeIndex() {
     ]
     setPokedex(newPokemons)
   }
-
 
   const renderPokemonList = pokemons.map((pokemon, i) => {
     return (
@@ -59,19 +55,17 @@ export default function PokeIndex() {
           </ButtonAdd>
 
           <ButtonDetails>
-            <button onClick={()=> pokemonDetails(i)}>Detalhes</button>
+            <button onClick={() => pokemonDetails(i)}>Detalhes</button>
           </ButtonDetails>
 
-          {/* <ImgPoke> */}
-            <Bluur>
-              <ImgPokes
-                alt="Imagens dos Pokemons"
-                src={`${BASE_URLIMG}/${i + 1}.gif`}
-                lazy="Loading"
-              />
-            </Bluur>
-          {/* </ImgPoke> */}
-   
+          <Bluur>
+            <ImgPokes
+              alt="Imagens dos Pokemons"
+              src={`${BASE_URLIMG}/${i + 1}.gif`}
+              lazy="Loading"
+            />
+          </Bluur>
+
           <ContainerName>
             <p>{pokemon.name.toUpperCase()}</p>
           </ContainerName>
@@ -84,14 +78,12 @@ export default function PokeIndex() {
     <>
       <Header>
         <Pokedex className="header" src="./img/pokemons.png" />
-          <HeaderButton className="back">
-            <ButtonGoBack>Voltar</ButtonGoBack>
-          </HeaderButton>
+        <HeaderButton className="back">
+          <ButtonGoBack>Voltar</ButtonGoBack>
+        </HeaderButton>
         <div></div>
         <HeaderButton className="pokedex">
-          <button onClick={pagePokedex} >
-            Pokedéx
-          </button>
+          <button onClick={pagePokedex}>Pokedéx</button>
         </HeaderButton>
       </Header>
 
