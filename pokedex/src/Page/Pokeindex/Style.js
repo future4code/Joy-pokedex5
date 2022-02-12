@@ -129,7 +129,7 @@ justify-content: center;
 box-shadow: inset 10px 10px 10px green, 1px 1px 1em #00FF00;
 
 margin-top: 15px;
-height:100px;
+height:150px;
 width: 100px;
 border-radius:50%;
 margin-bottom: 20px;
